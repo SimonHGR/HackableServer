@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Create A New Message</h1>
+        <form>
+            <textarea id="message" cols="64" rows="6" placeholder="enter message here, markup OK"></textarea>
+            <input id="submit" type="submit">
+        </form>
+        <script>
+            (function () {
+                var text = document.getElementById("message");
+//                console.log('text is '); console.log(text);
+                var submit = document.getElementById("submit");
+                submit.addEventListener("click", function () {
+                    var msg = text.value;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/myapp/messages");
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.status === 201 && xhr.readyState === 4) {
+                            alert('Message created OK!');
+                            document.location = "/myapp/files/index.html";
+                        }
+                    };
+                    xhr.send("message=" + msg);
+                    console.log('message submitted');
+                });
+            }());
+        </script>
+    </body>
+</html>
