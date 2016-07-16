@@ -1,12 +1,27 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <title>Welcome to Our Services</title>
+    </head>
     <body>
-        <h1>Welcome</h1>
-        <p>Please log in</p>
-        <form action="/myapp/login">
-            UserID: <input type="text" name="userid"><br>
-            Password: <input type="text" name="password"><br>
-            <input type="submit" value="submit">
-            
+        <H1>Features</h1>
+        <a href="/myapp/files/login.html">Login</a><br>
+        <a href="/myapp/logout">Logout</a><br>
+        <a href="/myapp/getPrivileged">See privileged info</a><br>
+        <a href="/myapp/files/createmessage.html">Create a Message</a><br>
+        <form>
+            See message number <input id="msgid" type="number">
+            <input type="button" id="trigger">
         </form>
+        
+        <script>
+            (function(){
+                var text = document.getElementById("msgid");
+                var btn = document.getElementById("trigger");
+                btn.addEventListener('click', function() {
+                    document.location = "/myapp/messages/" + text.value;
+                });
+            }());
+        </script>
     </body>
 </html>

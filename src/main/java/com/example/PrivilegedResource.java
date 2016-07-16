@@ -15,7 +15,7 @@ public class PrivilegedResource {
     public String getPriv(@CookieParam("user") String session) {
         if (session == null || session.length() == 0) {
             try {
-                URI redirTo = new URI("/myapp/files/index.html");
+                URI redirTo = new URI("/myapp/files/login.html");
                 throw new WebApplicationException(Response.temporaryRedirect(redirTo).build());
             } catch (URISyntaxException ex) {
                 System.out.println("URISyntax!");
